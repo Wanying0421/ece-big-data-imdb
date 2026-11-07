@@ -1,0 +1,13 @@
+# Data (too large for Git)
+data/raw/
+data/parquet/
+
+# Jupyter and Python
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
