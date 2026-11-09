@@ -1,7 +1,12 @@
 import json
 import re
 from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+from urllib.request import Request
+
+if __package__:
+    from .wikimedia_http import open_wikimedia
+else:
+    from wikimedia_http import open_wikimedia
 
 
 def find_wikipedia_articles(imdb_ids):
@@ -33,7 +38,7 @@ def find_wikipedia_articles(imdb_ids):
         },
     )
 
-    with urlopen(request, timeout=30) as response:
+    with open_wikimedia(request, timeout=30) as response:
         rows = json.load(response)["results"]["bindings"]
 
     articles = {imdb_id: [] for imdb_id in unique_ids}

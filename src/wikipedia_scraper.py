@@ -1,7 +1,12 @@
 import argparse
 import json
 from urllib.parse import quote, urlencode
-from urllib.request import Request, urlopen
+from urllib.request import Request
+
+if __package__:
+    from .wikimedia_http import open_wikimedia
+else:
+    from wikimedia_http import open_wikimedia
 from bs4 import BeautifulSoup
 
 def fetch_wikipedia(**params):
@@ -16,7 +21,7 @@ def fetch_wikipedia(**params):
         },
     )
 
-    with urlopen(request, timeout=20) as response:
+    with open_wikimedia(request, timeout=20) as response:
         data = json.load(response)
 
     if "error" in data:
