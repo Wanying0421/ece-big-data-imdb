@@ -1,16 +1,31 @@
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
+import argparse
+
+parser = argparse.ArgumentParser(description="Export Wikipedia enrichment to Parquet")
+parser.add_argument("--films", default="wikipedia_batch_test.jsonl", help="Film JSONL input")
+parser.add_argument(
+    "--biographies",
+    default="wikipedia_biographies_batch.jsonl",
+    help="Biography JSONL input",
+)
+parser.add_argument(
+    "--output",
+    default="data/parquet/wikipedia_enriched_sample",
+    help="Parquet output directory",
+)
+args = parser.parse_args()
 
 spark = SparkSession.builder.appName("Check IMDb enrichment").getOrCreate()
 
 films = spark.read.schema(
     "tconst STRING, title STRING, synopsis STRING, source_url STRING, note STRING"
-).json("wikipedia_batch_test.jsonl")
+).json(args.films)
 
 people = spark.read.schema(
     "tconst STRING, nconst STRING, name STRING, biography STRING, "
     "source_url STRING, note STRING"
-).json("wikipedia_biographies_batch.jsonl")
+).json(args.biographies)
 
 biographies_by_film = people.groupBy("tconst").agg(
     F.countDistinct(
@@ -32,5 +47,5 @@ enriched = (
 
 enriched.select("title", "biography_count", "coverage_note").show(truncate=False)
 
-enriched.write.parquet("data/parquet/wikipedia_enriched_sample")
+enriched.write.parquet(args.output)
 spark.stop()
