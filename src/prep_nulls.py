@@ -1,11 +1,14 @@
 """Compute the percentage of null / empty values for every column.
 
 A value counts as missing if it is NULL, or (for string columns) empty or
-whitespace only. Results are printed, saved to reports/null_rates.csv and the
-five columns with the highest percentage are reported.
+whitespace only (spaces, tabs, line breaks). Results are printed, saved to
+reports/null_rates.csv and the five columns with the highest percentage are
+reported. Columns of an empty table are kept with a missing count of 0 and an
+undefined percentage, and are left out of the top five.
 """
 
 import csv
+import os
 
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
@@ -29,7 +32,8 @@ def missing_condition(field):
     """Spark condition that is true when the value is missing."""
     col = F.col(field.name)
     if isinstance(field.dataType, StringType):
-        return col.isNull() | (F.trim(col) == "")
+        # \s also matches tabs and line breaks, which F.trim would leave in place.
+        return col.isNull() | col.rlike(r"^\s*$")
     return col.isNull()
 
 
@@ -43,16 +47,21 @@ def table_null_rates(spark, table):
         )
     row = df.agg(*aggs).collect()[0].asDict()
     total = row["__total__"]
-    return [
-        {
-            "table": table,
-            "column": field.name,
-            "total_rows": total,
-            "missing": row[field.name],
-            "missing_pct": round(100.0 * row[field.name] / total, 4),
-        }
-        for field in df.schema.fields
-    ]
+
+    results = []
+    for field in df.schema.fields:
+        missing = row[field.name] or 0  # SUM over an empty table is NULL
+        results.append(
+            {
+                "table": table,
+                "column": field.name,
+                "total_rows": total,
+                "missing": missing,
+                # Undefined (None) for an empty table.
+                "missing_pct": round(100.0 * missing / total, 4) if total else None,
+            }
+        )
+    return results
 
 
 def main():
@@ -63,6 +72,7 @@ def main():
         results.extend(table_null_rates(spark, table))
         print(f"done: {table}")
 
+    os.makedirs(os.path.dirname(OUT_FILE), exist_ok=True)
     with open(OUT_FILE, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=results[0].keys())
         writer.writeheader()
@@ -70,10 +80,12 @@ def main():
 
     print("\n=== Missing percentage per column ===")
     for r in results:
-        print(f"{r['table']:18} {r['column']:18} {r['missing_pct']:>9.4f}%")
+        pct = "undefined" if r["missing_pct"] is None else f"{r['missing_pct']:.4f}%"
+        print(f"{r['table']:18} {r['column']:18} {pct:>10}")
 
     print("\n=== Top 5 columns by missing percentage ===")
-    for r in sorted(results, key=lambda r: r["missing_pct"], reverse=True)[:5]:
+    defined = [r for r in results if r["missing_pct"] is not None]
+    for r in sorted(defined, key=lambda r: r["missing_pct"], reverse=True)[:5]:
         print(f"{r['table']}.{r['column']}: {r['missing_pct']}%")
 
     spark.stop()
