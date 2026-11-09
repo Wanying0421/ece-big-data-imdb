@@ -2,13 +2,14 @@
 
 Input : data/parquet/<table>
 Output: data/parquet_clean/<table>            cleaned tables (same names)
-        data/parquet_clean/_rejected/<table>  rows removed, kept for traceability
+        data/parquet_clean/_rejected/<table>  rows removed, with a reject_reason column
         reports/cleaning_summary.csv          row counts before / after
 
 Strategy (nothing is dropped silently):
   * impossible values  -> set to NULL and mark the row in the dq_flags column
   * suspicious values  -> keep the value and mark the row in dq_flags
-  * orphan child rows  -> moved to _rejected (the parent record does not exist)
+  * orphan child rows  -> moved to _rejected (the parent record does not exist);
+                          a row failing several foreign keys is rejected once
   * orphan ids inside comma separated lists -> removed from the list
 """
 
@@ -36,6 +37,18 @@ TABLES = [
     "title_principals",
     "title_ratings",
 ]
+
+# Key column of each parent table.
+PARENT_KEYS = {"title_basics": "tconst", "name_basics": "nconst"}
+
+# Foreign keys checked during cleaning: table -> [(column, parent table)].
+FOREIGN_KEYS = {
+    "title_ratings": [("tconst", "title_basics")],
+    "title_episode": [("tconst", "title_basics"), ("parentTconst", "title_basics")],
+    "title_crew": [("tconst", "title_basics")],
+    "title_akas": [("titleId", "title_basics")],
+    "title_principals": [("tconst", "title_basics"), ("nconst", "name_basics")],
+}
 
 
 def null_int():
@@ -69,13 +82,22 @@ def drop_ids_from_list(df, col, bad_ids):
     )
 
 
-def split_by_parent(child, child_key, parent_df, parent_key):
-    """Return (rows whose key exists in the parent table, rows whose key does not)."""
-    parent = parent_df.select(F.col(parent_key).alias(child_key))
-    return (
-        child.join(parent, child_key, "left_semi"),
-        child.join(parent, child_key, "left_anti"),
-    )
+def split_by_parents(child, rules, tables):
+    """Check the foreign keys one after the other.
+
+    Returns (kept, rejected). A row is rejected only once, for the first key that
+    has no parent; the reason is stored in the reject_reason column.
+    """
+    kept, rejected = child, None
+    for key, parent_table in rules:
+        parent_key = PARENT_KEYS[parent_table]
+        parent = tables[parent_table].select(F.col(parent_key).alias(key))
+        bad = kept.join(parent, key, "left_anti").withColumn(
+            "reject_reason", F.lit(f"{key} not found in {parent_table}.{parent_key}")
+        )
+        kept = kept.join(parent, key, "left_semi")
+        rejected = bad if rejected is None else rejected.unionByName(bad)
+    return kept, rejected
 
 
 def clean_name_basics(nb, bad_titles):
@@ -108,6 +130,13 @@ def clean_title_basics(tb):
     )
 
 
+def count_rows(spark, path):
+    try:
+        return spark.read.parquet(path).count()
+    except Exception:  # nothing readable was written (no rejected rows)
+        return 0
+
+
 def main():
     spark = (
         SparkSession.builder.appName("prep_clean")
@@ -130,19 +159,10 @@ def main():
     out, rejected = {}, {}
     out["name_basics"] = clean_name_basics(nb, bad_titles)
     out["title_basics"] = clean_title_basics(tb)
-    out["title_ratings"] = t["title_ratings"]
-    out["title_episode"], rejected["title_episode"] = split_by_parent(
-        t["title_episode"], "parentTconst", tb, "tconst"
-    )
-    crew, rejected["title_crew"] = split_by_parent(t["title_crew"], "tconst", tb, "tconst")
-    crew = drop_ids_from_list(crew, "directors", bad_people)
+    for name, rules in FOREIGN_KEYS.items():
+        out[name], rejected[name] = split_by_parents(t[name], rules, t)
+    crew = drop_ids_from_list(out["title_crew"], "directors", bad_people)
     out["title_crew"] = drop_ids_from_list(crew, "writers", bad_people)
-    out["title_akas"], rejected["title_akas"] = split_by_parent(
-        t["title_akas"], "titleId", tb, "tconst"
-    )
-    out["title_principals"], rejected["title_principals"] = split_by_parent(
-        t["title_principals"], "nconst", nb, "nconst"
-    )
 
     for name, df in out.items():
         df.write.mode("overwrite").parquet(f"{OUT_DIR}/{name}")
@@ -166,9 +186,7 @@ def main():
                 "rows_in": spark.read.parquet(f"{IN_DIR}/{name}").count(),
                 "rows_clean": clean.count(),
                 "rows_rejected": (
-                    spark.read.parquet(f"{REJECT_DIR}/{name}").count()
-                    if name in rejected
-                    else 0
+                    count_rows(spark, f"{REJECT_DIR}/{name}") if name in rejected else 0
                 ),
                 "rows_flagged": flagged,
             }
