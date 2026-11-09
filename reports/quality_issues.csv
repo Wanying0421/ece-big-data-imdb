@@ -1,0 +1,25 @@
+issue,table,description,affected_rows,total_rows,pct
+death_before_birth,name_basics,deathYear < birthYear,28,15795204,0.0002
+future_year,name_basics,birthYear or deathYear > 2026,0,15795204,0.0
+implausible_lifespan,name_basics,deathYear - birthYear > 120,2,15795204,0.0
+end_before_start,title_basics,endYear < startYear,0,12942367,0.0
+future_year,title_basics,startYear > 2026,5862,12942367,0.0453
+invalid_runtime,title_basics,runtimeMinutes <= 0,4,12942367,0.0
+extreme_runtime,title_basics,runtimeMinutes > 1000,441,12942367,0.0034
+invalid_rating,title_ratings,"averageRating outside [1, 10]",0,1729742,0.0
+invalid_votes,title_ratings,numVotes <= 0,0,1729742,0.0
+self_reference,title_episode,episode is its own parent,0,10017689,0.0
+duplicate_key,name_basics,duplicate rows on ['nconst'],0,15795204,0.0
+duplicate_key,title_basics,duplicate rows on ['tconst'],0,12942367,0.0
+duplicate_key,title_ratings,duplicate rows on ['tconst'],0,1729742,0.0
+duplicate_key,title_episode,duplicate rows on ['tconst'],0,10017689,0.0
+missing_parent,title_ratings,tconst not found in title_basics.tconst,0,1729742,0.0
+missing_parent,title_episode,tconst not found in title_basics.tconst,0,10017689,0.0
+missing_parent,title_episode,parentTconst not found in title_basics.tconst,5,10017689,0.0
+missing_parent,title_crew,tconst not found in title_basics.tconst,56,12939933,0.0004
+missing_parent,title_akas,titleId not found in title_basics.tconst,98,60255953,0.0002
+missing_parent,title_principals,tconst not found in title_basics.tconst,0,102607475,0.0
+missing_parent,title_principals,nconst not found in name_basics.nconst,8348,102607475,0.0081
+missing_parent,title_crew,directors not found in name_basics.nconst,423,9583179,0.0044
+missing_parent,title_crew,writers not found in name_basics.nconst,1148,15223497,0.0075
+missing_parent,name_basics,knownForTitles not found in title_basics.tconst,72,25555906,0.0003
