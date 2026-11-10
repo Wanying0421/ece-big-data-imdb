@@ -1,10 +1,10 @@
 import argparse
 import csv
-import json
 import re
 from urllib.parse import unquote, urlsplit
 
 from wikidata_lookup import find_wikipedia_articles
+from wikipedia_progress import jsonl_output, write_result
 from wikipedia_scraper import scrape_film
 
 
@@ -13,6 +13,7 @@ def main():
     parser.add_argument("--input", help="CSV file with a tconst column")
     parser.add_argument("--output", default="wikipedia_batch_test.jsonl")
     parser.add_argument("--batch-size", type=int, default=20)
+    parser.add_argument("--resume", action="store_true", help="Keep completed records in the output JSONL")
     args = parser.parse_args()
 
     if args.batch_size < 1:
@@ -37,37 +38,35 @@ def main():
     else:
         film_ids = ["tt1375666", "tt0133093"]
 
-    batch_size = args.batch_size
-    articles = {}
+    with jsonl_output(args.output, ("tconst",), args.resume) as (output_file, completed):
+        pending = [film_id for film_id in film_ids if (film_id,) not in completed]
+        print(f"Films remaining: {len(pending)}/{len(film_ids)}", flush=True)
 
-    for start in range(0, len(film_ids), batch_size):
-        batch = film_ids[start:start + batch_size]
-        articles.update(find_wikipedia_articles(batch))
+        for start in range(0, len(pending), args.batch_size):
+            batch = pending[start:start + args.batch_size]
+            articles = find_wikipedia_articles(batch)
+            for film_id in batch:
+                urls = articles[film_id]
+                if len(urls) == 1:
+                    source_url = urls[0]
+                    article_path = urlsplit(source_url).path.removeprefix("/wiki/")
+                    page_title = unquote(article_path).replace("_", " ")
+                    result = scrape_film(page_title, film_id)
+                    result["source_url"] = source_url
+                else:
+                    result = {
+                        "tconst": film_id,
+                        "title": None,
+                        "synopsis": None,
+                        "source_url": None,
+                        "note": (
+                            "Multiple English Wikipedia articles found"
+                            if urls else "No English Wikipedia article found"
+                        ),
+                    }
 
-    with open(args.output, "w", encoding="utf-8") as output_file:
-        for film_id in film_ids:
-            urls = articles[film_id]
-
-            if len(urls) == 1:
-                source_url = urls[0]
-                article_path = urlsplit(source_url).path.removeprefix("/wiki/")
-                page_title = unquote(article_path).replace("_", " ")
-                result = scrape_film(page_title, film_id)
-                result["source_url"] = source_url
-            else:
-                result = {
-                    "tconst": film_id,
-                    "title": None,
-                    "synopsis": None,
-                    "source_url": None,
-                    "note": (
-                        "Multiple English Wikipedia articles found"
-                        if urls else "No English Wikipedia article found"
-                    ),
-                }
-
-            output_file.write(json.dumps(result, ensure_ascii=False) + "\n")
-            print(f"{film_id} - {result['note'] or result['title']}")
+                write_result(output_file, result)
+                print(f"{film_id} - {result['note'] or result['title']}", flush=True)
 
 
 if __name__ == "__main__":
