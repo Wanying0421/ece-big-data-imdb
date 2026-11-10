@@ -1,0 +1,170 @@
+nconst,primaryName,n_movies,high_tconst,high_title,high_year,high_rating,high_votes,n_other,avg_other_rating,min_other_rating,max_other_rating,n_other_le6,all_others_le6,min_votes_filter
+nm0574625,James McTeigue,5,tt0434409,V for Vendetta,2005,8.1,1260974,4,5.975,5.5,6.4,2,False,100
+nm0549658,Richard Marquand,7,tt0086190,Star Wars: Episode VI - Return of the Jedi,1983,8.3,1228938,6,5.983,4.4,7.1,3,False,100
+nm0796117,M. Night Shyamalan,16,tt0167404,The Sixth Sense,1999,8.2,1176110,15,5.867,3.9,7.3,8,False,100
+nm0446819,Richard Kelly,4,tt0246578,Donnie Darko,2001,8.0,924881,3,5.433,5.3,5.6,3,True,100
+nm0001675,Robert Rodriguez,24,tt0401792,Sin City,2005,8.0,825545,23,5.896,3.6,7.5,11,False,100
+nm0588340,Frank Miller,3,tt0401792,Sin City,2005,8.0,825545,2,5.65,4.8,6.5,1,False,100
+nm0132709,Martin Campbell,21,tt0381061,Casino Royale,2006,8.0,758235,20,5.625,4.2,7.2,13,False,100
+nm0000814,John G. Avildsen,22,tt0075148,Rocky,1976,8.1,706580,21,5.776,3.9,7.4,14,False,100
+nm0000436,Curtis Hanson,16,tt0119488,L.A. Confidential,1997,8.2,666424,15,6.0,3.8,7.4,6,False,100
+nm0853238,Tate Taylor,7,tt1454029,The Help,2011,8.1,534873,6,5.883,5.0,6.9,4,False,100
+nm0936374,Kirk Wise,4,tt0101414,Beauty and the Beast,1991,8.0,511285,3,5.433,2.4,7.0,1,False,100
+nm0204628,Garth Davis,3,tt3741834,Lion,2016,8.0,270179,2,5.65,5.4,5.9,2,True,100
+nm0490487,Wai Keung Lau,44,tt0338564,Infernal Affairs,2002,8.0,139853,43,5.719,2.7,7.4,22,False,100
+nm1749112,Vincent Paronnaud,5,tt0808417,Persepolis,2007,8.0,107456,4,5.825,4.8,7.0,2,False,100
+nm0000671,Billy Bob Thornton,4,tt0117666,Sling Blade,1996,8.0,105174,3,5.933,5.7,6.3,2,False,100
+nm1084488,Umesh Shukla,7,tt2283748,OMG: Oh My God!,2012,8.1,72429,6,5.567,3.6,7.4,5,False,100
+nm2134474,Vikas Bahl,7,tt3322420,Queen,2013,8.1,72000,6,5.833,2.6,7.9,2,False,100
+nm1025280,Anubhav Sinha,13,tt10324144,Article 15,2019,8.1,42146,12,5.775,3.5,7.6,6,False,100
+nm1164861,Seth Gordon,8,tt0923752,The King of Kong: A Fistful of Quarters,2007,8.0,38791,7,5.7,3.8,6.9,5,False,100
+nm6134590,Apoorv Singh Karki,3,tt24485052,Sirf Ek Bandaa Kaafi Hai,2023,8.0,31511,2,4.2,3.7,4.7,2,True,100
+nm0559877,John Mathew Matthan,3,tt0200087,Sarfarosh,1999,8.1,29135,2,5.75,5.1,6.4,1,False,100
+nm1326535,Sundar C.,26,tt0367495,Anbe Sivam,2003,8.6,28806,25,5.684,3.8,7.7,16,False,100
+nm0178880,Eleanor Coppola,3,tt0102015,Hearts of Darkness: A Filmmaker's Apocalypse,1991,8.1,26253,2,5.2,4.6,5.8,2,True,100
+nm1729063,Mert Baykal,4,tt0425333,Pardon,2005,8.1,24925,3,5.9,4.5,7.4,2,False,100
+nm0846092,Kamal Tabrizi,15,tt0416960,The Lizard,2004,8.4,24812,14,5.757,4.1,7.5,7,False,100
+nm5120912,Ajay Bahl,4,tt8144834,Section 375,2019,8.0,21926,3,4.633,1.8,6.3,2,False,100
+nm0576554,Hansal Mehta,12,tt2181831,Shahid,2012,8.2,21881,11,5.755,3.5,7.7,7,False,100
+nm0244892,J.P. Dutta,10,tt0118751,Border,1997,8.0,20765,9,5.944,5.2,7.3,5,False,100
+nm6293294,Rojin Thomas,3,tt10534500,#Home,2021,8.7,20346,2,5.95,4.5,7.4,1,False,100
+nm1359360,Dharani,6,tt0422320,Ghilli,2004,8.2,19428,5,5.44,3.9,7.2,3,False,100
+nm8678191,Karthick Naren,4,tt6380520,Dhuruvangal Pathinaaru,2016,8.1,19395,3,5.433,4.4,6.0,3,True,100
+nm0787453,Kundan Shah,8,tt0085743,Jaane Bhi Do Yaaro,1983,8.3,18187,7,5.214,3.1,7.6,5,False,100
+nm0700872,Puri Jagannadh,34,tt0816258,Pokiri,2006,8.0,17298,33,5.515,2.6,7.9,21,False,100
+nm4093647,Anup Bhandari,3,tt4432480,RangiTaranga,2015,8.1,16198,2,6.0,5.1,6.9,1,False,100
+nm0471452,Suresh Krishna,25,tt0139876,Baasha,1995,8.2,13937,24,5.975,2.8,7.9,10,False,100
+nm5650589,Nalan Kumarasamy,5,tt2877108,Soodhu Kavvum,2013,8.2,13762,4,5.65,4.4,7.5,3,False,100
+nm0149134,Sinan Çetin,11,tt0263208,Abbas in Flower,1982,8.0,12163,10,4.89,1.8,7.1,8,False,100
+nm0348015,Gunasekhar,11,tt0366840,Okkadu,2003,8.0,11846,10,5.57,3.6,7.6,6,False,100
+nm2347386,Bommarillu Baskar,7,tt0843326,Bommarillu,2006,8.2,11144,6,5.917,4.6,7.1,3,False,100
+nm1098726,Milorad Milinkovic,8,tt0301634,Frozen Stiff,2002,8.3,11111,7,5.629,4.5,6.3,4,False,100
+nm0677951,Daniel Petrie,19,tt0055353,A Raisin in the Sun,1961,8.0,10731,18,5.906,4.4,7.1,10,False,100
+nm0556048,Mori Masaki,3,tt0085218,Barefoot Gen,1983,8.0,10699,2,5.9,5.5,6.3,1,False,100
+nm1703622,R. Madhesh,5,tt0220656,Mudhalvan,1999,8.4,9587,4,5.15,3.2,6.5,3,False,100
+nm0059633,Tunç Başaran,12,tt0098573,Don't Let Them Shoot the Kite,1989,8.1,8504,11,5.891,1.4,7.7,4,False,100
+nm11108345,K.S. Ashoka,3,tt11235142,Dia,2020,8.0,8381,2,5.4,5.0,5.8,2,True,100
+nm0481838,Edvin Laine,15,tt0048752,The Unknown Soldier,1955,8.0,8213,14,5.95,4.5,7.5,7,False,100
+nm1500124,M. Padmakumar,17,tt8561086,Joseph,2018,8.0,8048,16,5.587,2.9,7.4,8,False,100
+nm1777967,A.L. Vijay,21,tt1857670,Deiva Thirumagal,2011,8.3,7675,20,5.89,3.9,7.9,12,False,100
+nm1318819,Ezhil,11,tt1517561,Thulladha Manamum Thullum,1999,8.3,7361,10,4.77,2.8,6.4,8,False,100
+nm0466428,Jacob Kornbluth,4,tt2215151,Inequality for All,2013,8.0,7215,3,6.0,5.1,6.8,1,False,100
+nm7263882,Swaylee Loughnane,3,tt10123970,Mother's Child,2020,8.2,6733,2,2.65,2.3,3.0,2,True,100
+nm6044360,Ravikanth Perepu,3,tt5504168,Kshanam,2016,8.1,6700,2,5.95,5.9,6.0,2,True,100
+nm0291808,Angelos Frantzis,6,tt10710246,Eftihia,2019,8.0,6315,5,5.44,4.2,6.2,4,False,100
+nm0803350,Sangeeth Sivan,11,tt0290937,Yoddha,1992,8.4,5494,10,5.11,3.5,7.2,7,False,100
+nm6252943,Harish Vyas,3,tt36853476,Om Ka Hari,2026,9.8,5025,2,5.75,4.8,6.7,1,False,100
+nm2259353,Christopher Ashley,4,tt7638556,Come from Away,2021,8.5,5009,3,5.567,4.4,6.8,2,False,100
+nm0239063,Anselmo Duarte,3,tt0056322,The Given Word,1962,8.3,4803,2,5.95,5.1,6.8,1,False,100
+nm0435050,Shaji Kailas,25,tt0355169,Aaram Thamburan,1997,8.1,4096,24,5.35,3.3,7.7,15,False,100
+nm2321771,Smeep Kang,23,tt2245544,Carry on Jatta,2012,8.3,4015,22,5.841,3.7,7.7,11,False,100
+nm6327305,Raju Murugan,5,tt5611648,Joker,2016,8.3,3884,4,5.925,3.2,7.8,1,False,100
+nm6405547,Yuvaraj Dhayalan,3,tt16103606,Irugapatru,2023,8.1,3723,2,5.0,4.5,5.5,2,True,100
+nm2569785,Balasekaran,4,tt6827298,Love Today,1997,8.5,3557,3,5.3,4.6,6.7,2,False,100
+nm0536705,Ananth Mahadevan,12,tt21108804,Phule,2025,8.1,3248,11,5.6,3.5,7.8,6,False,100
+nm1459905,Raffi,10,tt0274012,Punjabi House,1998,8.1,3215,9,6.0,4.3,7.6,5,False,100
+nm0002239,Prince,3,tt0093970,Sign 'o' the Times,1987,8.0,3050,2,4.9,4.7,5.1,2,True,100
+nm0389514,David Hogan,3,tt0093970,Sign 'o' the Times,1987,8.0,3050,2,4.6,3.6,5.6,2,True,100
+nm0536299,Albert Magnoli,6,tt0093970,Sign 'o' the Times,1987,8.0,3050,5,5.32,3.4,6.5,3,False,100
+nm1871490,Paul Kampf,3,tt9522946,Harvest,2026,9.1,2962,2,5.05,4.8,5.3,2,True,100
+nm2015765,Vincent Selva,4,tt6827584,Priyamudan,1998,8.3,2885,3,4.8,2.0,6.5,2,False,100
+nm1434372,Johny Antony,10,tt0377575,C.I.D. Moosa,2003,8.1,2811,9,5.089,3.7,6.5,7,False,100
+nm18234335,Vishal,4,tt11173106,Sufna,2020,8.0,2498,3,5.467,5.3,5.6,3,True,100
+nm16275551,Sateesh Paramveda,3,tt32134802,Seetha Kalyana Vaibhogame,2024,8.4,2362,2,5.8,3.8,7.8,1,False,100
+nm9511013,Satish Paramvedha,3,tt32134802,Seetha Kalyana Vaibhogame,2024,8.4,2362,2,5.8,3.8,7.8,1,False,100
+nm0500896,David Leland,6,tt0380275,Concert for George,2003,8.6,2328,5,5.64,4.7,6.8,3,False,100
+nm7326029,Vinod Kapri,3,tt26899139,Pyre,2024,8.2,2303,2,6.0,5.3,6.7,1,False,100
+nm0347728,Melih Gülgen,10,tt0798796,Tatar Ramazan: Sürgünde,1992,8.0,2233,9,5.711,4.3,7.9,7,False,100
+nm0080315,Mahesh Bhatt,36,tt0088031,Saaransh,1984,8.1,2138,35,5.694,1.2,7.8,23,False,100
+nm3761143,Mallikarjuna Malli,3,tt15840674,Madhurapudi Gramam Ane Nenu,2023,8.0,2006,2,4.65,4.2,5.1,2,True,100
+nm2735803,Saurabh Varma,5,tt39150248,The Great Punjab Robbery,2026,9.3,1757,4,5.65,5.2,6.1,3,False,100
+nm1583171,R. Kannan,12,tt1621424,Jayam Kondaan,2008,8.0,1730,11,5.127,4.0,6.3,10,False,100
+nm1048560,Marcus Raboy,4,tt35445387,Conan O'Brien: The Kennedy Center Mark Twain Prize for American Humor,2025,8.0,1584,3,5.4,5.1,5.8,3,True,100
+nm11696266,Anand Chandra,3,tt39281522,Fight Maha,2026,8.9,1553,2,5.55,4.2,6.9,1,False,100
+nm4260569,A. Sarkunam,6,tt2078763,Vaagai Sooda Vaa,2011,8.2,1325,5,4.82,3.7,7.1,4,False,100
+nm0464424,Gábor Koltay,3,tt0087488,"István, a király",1984,8.3,1250,2,3.0,2.6,3.4,2,True,100
+nm10898010,Robbie Lopez,3,tt20764956,River Beauty,2023,8.3,1217,2,2.9,1.9,3.9,2,True,100
+nm0004596,Steve Binder,3,tt0058631,The T.A.M.I. Show,1964,8.3,1113,2,5.65,4.0,7.3,1,False,100
+nm0030762,Franz Antel,20,tt0082087,The Stubborn Mule,1981,8.1,1107,19,5.021,3.1,6.6,15,False,100
+nm0062614,Harry Baweja,12,tt6246170,Chaar Sahibzaade 2: Rise of Banda Singh Bahadur,2016,8.6,1050,11,4.909,2.7,7.8,10,False,100
+nm5676082,R. Anantharaju,3,tt42331111,Shreemati Sindoora,2026,9.0,1023,2,5.9,5.1,6.7,1,False,100
+nm2116358,Mehran Modiri,3,tt27757760,Laugh Bomb,2008,8.1,1000,2,4.5,4.0,5.0,2,True,100
+nm3819854,Om Raut,3,tt4219894,Lokmanya Ek Yugpurush,2015,8.2,855,2,5.05,2.6,7.5,1,False,100
+nm0252835,Radwan El-Kashef,3,tt0166486,Date Wine,1998,8.2,752,2,5.95,5.2,6.7,1,False,100
+nm6127822,Ganesh Vinayak,4,tt14095634,Thaen,2021,8.0,682,3,5.233,4.2,6.1,2,False,100
+nm6468326,Avinash Das,3,tt32751390,Inn Galiyon Mein,2025,8.0,641,2,5.6,5.1,6.1,1,False,100
+nm3167881,Eric Esau,4,tt4585080,The Heart of Man,2017,8.0,591,3,5.6,5.4,5.8,3,True,100
+nm0629306,Gino Nichele,5,tt5252440,Hot Wheels Acceleracers the Ultimate Race,2005,8.0,590,4,5.475,5.1,5.9,4,True,100
+nm0448094,Jeff Kennedy,5,tt0279121,Heaven's Neighbors,2005,8.0,537,4,4.8,4.0,6.2,3,False,100
+nm3578603,Manish Tiwary,3,tt14188316,Chidiakhana,2023,8.4,529,2,5.65,4.4,6.9,1,False,100
+nm0007144,Santosh Sivan,9,tt0295294,Halo,1996,8.3,523,8,5.963,1.5,7.3,2,False,100
+nm1455023,Calvito Leal,3,tt1440286,Simonal: Ninguém Sabe o Duro que Dei,2009,8.1,454,2,5.2,4.8,5.6,2,True,100
+nm0518123,Julia Loktev,3,tt33075192,My Undesirable Friends: Part I - Last Air in Moscow,2024,8.0,436,2,5.95,5.6,6.3,1,False,100
+nm6732205,Venkat Bharadwaj,4,tt39221192,Rakky,2026,8.4,434,3,5.8,4.9,6.8,2,False,100
+nm1103147,Igor Mirkovic,4,tt0410657,Sretno dijete,2003,8.1,432,3,5.933,5.2,6.5,1,False,100
+nm0763812,Jeff Santo,5,tt0408261,This Old Cub,2004,8.2,414,4,4.675,3.7,5.7,4,True,100
+nm6304911,Stefanie Davis,5,tt30630069,A New Year's Ride,2024,8.4,370,4,5.9,5.2,7.7,3,False,100
+nm0300174,Levan Gabriadze,5,tt7526492,Rezo,2018,8.0,354,4,5.75,5.3,6.2,3,False,100
+nm1896291,Ashok Pati,7,tt32142963,Pabar,2024,8.0,342,6,5.283,4.6,6.1,5,False,100
+nm0766207,Hajime Satō,5,tt8942902,"Conan, the Boy in Future",1979,8.0,339,4,5.8,4.7,6.2,1,False,100
+nm0602452,Andrew Morahan,5,tt1418353,George Michael: Live in London,2009,8.2,323,4,4.25,3.2,5.2,4,True,100
+nm0474823,Kranthi Kumar,3,tt0253667,Seetharamaiah Gari Manavaralu,1991,8.0,316,2,5.45,5.0,5.9,2,True,100
+nm0932216,Nick Willing,5,tt6392918,"Paula Rego, Secrets & Stories",2017,8.0,301,4,5.85,4.9,6.7,2,False,100
+nm6484954,Vasudevan Sanal,3,tt23049420,Haya,2022,8.8,299,2,5.9,5.5,6.3,1,False,100
+nm1533000,Shin Jai-ho,5,tt39195598,Wanted,2026,9.3,281,4,5.625,4.9,6.0,4,True,100
+nm0193303,Dan Curtis,5,tt0092001,St. John in Exile,1986,8.3,280,4,5.9,5.4,6.4,2,False,100
+nm2970298,Ken Gayton,3,tt2338399,Wingmen Incorporated,2013,8.2,264,2,4.6,4.3,4.9,2,True,100
+nm3199311,Jason W. Schaver,3,tt2338399,Wingmen Incorporated,2013,8.2,264,2,4.6,4.3,4.9,2,True,100
+nm0517768,Dimitri Logothetis,11,tt0097042,Champions Forever,1989,8.0,234,10,4.35,2.9,6.6,9,False,100
+nm2840629,Steve Rahaman,3,tt1813719,To Be King,2011,8.6,232,2,3.0,2.6,3.4,2,True,100
+nm0050287,Janko Baljak,3,tt3575194,Gram. Kilogram. Tona.,2015,8.2,228,2,5.15,3.6,6.7,1,False,100
+nm0954099,Dejan Zecevic,12,tt0254254,Decak iz Junkovca,1996,8.5,222,11,5.873,3.4,7.3,4,False,100
+nm2598931,Hunter G. Williams,4,tt1523972,Tomorrow's End,2011,8.4,207,3,4.7,3.9,5.5,3,True,100
+nm5407951,Sunil Ibrahim,5,tt27512908,The Third Murder,2026,8.4,191,4,5.95,5.5,6.3,2,False,100
+nm10564794,Cengiz Özkarabekir,3,tt10062150,Yücel'in Çiçekleri,2018,8.0,183,2,4.75,4.5,5.0,2,True,100
+nm4423404,Jiju Asokan,3,tt15501816,Pulli,2023,8.4,180,2,5.95,5.6,6.3,1,False,100
+nm4840433,Brett Michael Innes,3,tt3607252,Sink,2015,8.1,173,2,5.9,5.0,6.8,1,False,100
+nm1235947,Jayprakkash Shaw,5,tt36792056,Love karu Yaa Shaadi,2025,8.2,165,4,4.0,3.2,4.8,4,True,100
+nm3359146,Rabi Kinagi,24,tt1446180,Suna Panjuri,1995,9.0,153,23,5.765,4.5,6.9,15,False,100
+nm0132257,Bruce Campbell,3,tt37091259,Ernie & Emma,2026,8.4,151,2,5.75,5.4,6.1,1,False,100
+nm0325877,Paul Goldman,5,tt27765806,Ego: The Michael Gudinski Story,2023,8.0,151,4,5.9,5.4,6.7,3,False,100
+nm11412226,Sigrid Polon,12,tt35497675,Boys in Service,2025,8.0,145,11,4.855,4.1,7.2,10,False,100
+nm0152469,Michael Chapman,4,tt3659066,Peter Gabriel: Live in Athens 1987,2013,8.4,142,3,5.567,5.2,6.0,3,True,100
+nm1723177,Ryan Gielen,3,tt6146634,My Beautiful Stutter,2021,8.1,138,2,5.05,4.4,5.7,2,True,100
+nm2614650,Jeff Kaufman,3,tt13065642,Nasrin,2020,8.1,138,2,4.55,1.5,7.6,1,False,100
+nm0401502,Matt Hullum,4,tt0145456,The Schedule,1997,8.1,135,3,5.867,5.5,6.3,2,False,100
+nm4062141,A. Venkatesh,7,tt33396613,Dhil Raja,2024,8.4,134,6,5.7,3.9,7.4,4,False,100
+nm1242171,Kit Ryan,3,tt4567954,Property of the State,2016,8.2,130,2,5.4,5.2,5.6,2,True,100
+nm4299374,Alex R. Wagner,7,tt33510862,Barbenheimer and the Cult of Walt Disney,2024,9.1,130,6,5.933,2.4,7.5,2,False,100
+nm1328135,Kanti Shah,5,tt12569318,Bed Room,2007,8.5,127,4,5.475,4.4,7.3,3,False,100
+nm14458841,Ankit Patel,4,tt12569318,Bed Room,2007,8.5,127,3,4.567,3.2,6.1,2,False,100
+nm0872538,Nik Triantafyllidis,5,tt5588280,90 Years of PAOK: Nostalgia for the Future,2016,8.6,122,4,5.975,4.9,7.4,2,False,100
+nm11029421,Amadeusz Kocan,3,tt11874886,The last people of Chernobyl 3,2020,8.2,120,2,4.45,3.9,5.0,2,True,100
+nm1410462,Gabriel Cowan,4,tt1240543,Flower in the Gun Barrel,2008,8.0,120,3,4.433,4.3,4.6,3,True,100
+nm1013665,Marco Ponti,7,tt23790910,La bella stagione,2022,8.2,119,6,5.683,4.7,6.9,4,False,100
+nm1186703,Erik de Castro,3,tt0320443,Senta a Pua!,1999,8.2,119,2,4.8,3.3,6.3,1,False,100
+nm0538733,Max Makowski,3,tt0151975,The Pigeon Egg Strategy,1998,8.0,116,2,4.65,3.6,5.7,2,True,100
+nm0064961,Gorman Bechard,11,tt3588852,A Dog Named Gucci,2015,8.4,115,10,5.44,3.2,7.3,6,False,100
+nm0958539,Dan Zukovic,3,tt2357300,Scammerhead,2014,8.3,115,2,5.85,5.2,6.5,1,False,100
+nm3427311,Joseph Henson,3,tt7390102,Court of Appeals,2018,8.4,114,2,3.7,3.5,3.9,2,True,100
+nm0002916,Ray Brady,8,tt1400502,Egression,2011,8.8,113,7,5.471,4.1,7.3,5,False,100
+nm0580669,James Merendino,11,tt1284066,The Invisible Life of Thomas Lynch,2009,9.1,113,10,5.3,3.5,7.5,7,False,100
+nm1701136,Thomas L. Phillips,3,tt0870193,Rattle Basket,2007,8.7,111,2,4.8,4.4,5.2,2,True,100
+nm3093965,Carlos Etzio Roman,3,tt2463672,Dissensions,2012,8.7,111,2,5.95,4.6,7.3,1,False,100
+nm3909608,M.D. Sridhar,4,tt3666724,Jolly Days,2009,8.2,111,3,5.667,3.9,6.6,1,False,100
+nm1069500,Sam Logan Khaleghi,3,tt1380912,Love Is a Thieves' Game,2011,8.6,110,2,3.4,3.1,3.7,2,True,100
+nm0517665,Tom Logan,5,tt2177711,Sean and Melissa: 10 Years Later,2012,9.0,107,4,5.525,5.0,6.6,3,False,100
+nm0941708,Michael Worth,6,tt0822811,God's Ears,2008,8.0,107,5,5.86,5.2,6.4,3,False,100
+nm10050155,Kayode Kasum,5,tt32631952,Ajosepo,2024,8.3,107,4,5.975,4.9,7.1,2,False,100
+nm2551464,Nayato Fio Nuala,4,tt1774395,Heart 2 Heart,2010,8.4,107,3,3.867,3.0,5.1,3,True,100
+nm10584889,Shhivaji Doltade,3,tt32813775,Raja Rani,2024,9.0,106,2,4.8,2.3,7.3,1,False,100
+nm4479905,Billy Christian,9,tt21249546,The Sacred Riana 2: Bloody Mary,2022,8.4,106,8,5.725,4.5,7.3,6,False,100
+nm0096539,António Borges Correia,8,tt0759483,Antes de a Vida Começar,2006,9.3,105,7,5.314,4.5,6.0,7,True,100
+nm1142903,Vito Trabucco,5,tt4393410,Henchman: The Al Leong Story,2018,8.3,105,4,3.6,2.5,4.7,4,True,100
+nm0005614,Stuart Urban,4,tt0882816,"Tovarisch, I Am Not Dead",2007,8.1,104,3,5.267,4.6,5.8,3,True,100
+nm0612664,Laurits Munch-Petersen,5,tt1489901,Hurry Home,2009,8.2,104,4,5.875,4.9,6.9,2,False,100
+nm1212770,Wenn V. Deramas,21,tt3281892,Bekikang: Ang nanay kong beki,2013,8.5,104,20,5.98,4.4,7.9,12,False,100
+nm5598697,Binayak Das,3,tt6417846,Chhota Bheem Aur Chhalchhaaya,2014,8.2,101,2,5.45,5.3,5.6,2,True,100
+nm0651690,Ken Osborne,3,tt0790682,Hollywood Confidential,2008,8.0,100,2,4.7,4.4,5.0,2,True,100
+nm1688464,Pedro Antonio,11,tt25753082,New Year's Special,2023,8.4,100,10,5.61,4.6,6.4,8,False,100
+nm3649519,Carolina Durão,3,tt25753082,New Year's Special,2023,8.4,100,2,5.35,5.2,5.5,2,True,100
