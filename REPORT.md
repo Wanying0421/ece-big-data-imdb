@@ -42,7 +42,7 @@ We kept series with at least three seasons of ten or more episodes each and at l
 
 For each eligible series, we calculated the highest and lowest ratings across all rated episodes with a known season number. We excluded series whose highest and lowest ratings were identical. Under the main rule, a series qualified if at least one episode with the highest rating was in the first two seasons and at least one episode with the lowest rating was in the final season. We then applied the stricter rule to check how many series still qualified when all tied episodes had to be in the expected seasons.
 
-We excluded 2,119,096 of the 10,022,141 episode rows (21.14%) because their season number was missing. This means the results only reflect episodes that could be assigned to a season.
+We excluded 2.119.096 of the 10.022.141 episode rows (21.14%) because their season number was missing. This means the results only reflect episodes that could be assigned to a season.
 
 ## 3. Data enrichment
 
