@@ -7,7 +7,7 @@ Definitions
 - A movie with several genres is evaluated in each of its genres.
 - Genres with fewer than MIN_GENRE_SIZE movies are not used for detection.
 
-Detection methods (choose with --method, default: zscore)
+Detection methods (choose with --method, default: log_zscore)
 ---------------------------------------------------------
 - zscore     : |runtime - mean| / std > Z_THRESHOLD
 - log_zscore : same rule computed on ln(runtime); bounds converted back to minutes
@@ -205,7 +205,7 @@ def with_counts(bounded, outliers):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--method", choices=METHODS, default="zscore")
+    parser.add_argument("--method", choices=METHODS, default="log_zscore")
     args = parser.parse_args()
 
     spark = SparkSession.builder.appName("explore_q1").getOrCreate()
