@@ -1,0 +1,8 @@
+combo,n_roles,n_credits,n_movies,mean_rating,weighted_rating,median_votes
+actor,1,61918,45365,5.864,7.131,903
+director,1,27468,26105,5.954,7.02,637
+writer,1,27236,22801,5.925,7.078,870
+actor+director,2,1519,1492,5.715,7.126,473
+actor+writer,2,5536,4987,5.617,6.993,705
+director+writer,2,59164,56511,5.967,7.192,582
+actor+director+writer,3,6324,6122,5.594,6.971,490
