@@ -1,0 +1,6 @@
+combo,n_people,mean_diff,median_diff,pct_better,pct_worse
+ANY multi-role,13737,0.02,0.033,51.3,48.1
+actor+director,877,-0.077,-0.063,47.2,52.2
+actor+director+writer,2583,-0.055,-0.025,48.5,50.9
+actor+writer,2543,-0.007,0.033,51.3,48.1
+director+writer,11107,0.038,0.036,51.7,47.7
