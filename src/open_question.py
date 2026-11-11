@@ -1,32 +1,40 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, avg, count
+from pyspark.sql.functions import col, avg, count, split, explode, round
 
 def main():
     spark = SparkSession.builder \
-        .appName("IMDbOpenQuestionAnalysis") \
+        .appName("IMDbAdvancedGenreAnalysis") \
         .getOrCreate()
 
     spark.sparkContext.setLogLevel("WARN")
 
-    # Load cleaned IMDb datasets
     title_basics = spark.read.parquet("work/data/parquet_clean/title_basics")
     title_ratings = spark.read.parquet("work/data/parquet_clean/title_ratings")
 
-    # Open Question: Analyzing average rating and movie count per genre for feature films since 2000
-    movies = title_basics.filter((col("titleType") == "movie") & (col("startYear") >= 2000))
-    
-    joined_df = movies.join(title_ratings, "tconst")
+    movies = title_basics.filter(
+        (col("titleType") == "movie") & 
+        (col("startYear") >= 2000) & 
+        (col("genres").isNotNull()) & 
+        (col("genres") != "\\N")
+    )
 
-    genre_analysis = joined_df.groupBy("genres") \
+    exploded_genres = movies.withColumn("genre", explode(split(col("genres"), ",")))
+
+    joined_df = exploded_genres.join(title_ratings, "tconst")
+
+    genre_analysis = joined_df.groupBy("genre") \
         .agg(
             count("tconst").alias("movie_count"),
-            avg("averageRating").alias("avg_rating")
+            round(avg("averageRating"), 2).alias("avg_rating"),
+            round(avg("numVotes"), 0).alias("avg_votes")
         ) \
-        .filter(col("movie_count") > 50) \
-        .orderBy(col("avg_rating").desc())
+        .filter(col("movie_count") > 100) \
+        .orderBy(col("avg_rating").desc(), col("movie_count").desc())
 
-    print("=== Open Question Results: Top Genres by Average Rating (Since 2000) ===")
-    genre_analysis.show(10, truncate=False)
+    print("=== Advanced Open Question Results: Genre Performance (Since 2000) ===")
+    genre_analysis.show(20, truncate=False)
+
+    genre_analysis.toPandas().to_csv("work/reports/open_question_results.csv", index=False)
 
     spark.stop()
 
