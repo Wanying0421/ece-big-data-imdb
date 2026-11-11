@@ -1,0 +1,22 @@
+{
+  "films_total": 6822,
+  "films_with_synopsis": 5567,
+  "biography_records_total": 20435,
+  "biography_records_with_text": 17739,
+  "people_total": 10481,
+  "people_with_biography": 7829,
+  "films_with_at_least_one_biography": 6490,
+  "films_with_three_biographies": 5205,
+  "films_with_synopsis_and_three_biographies": 4773,
+  "missing_biography_notes": {
+    "No English Wikipedia article found": 2686,
+    "Multiple English Wikipedia articles found": 9,
+    "No introductory biography found": 1
+  },
+  "missing_synopsis_notes": {
+    "No Plot section found": 750,
+    "No English Wikipedia article found": 491,
+    "Plot section is empty": 13,
+    "Multiple English Wikipedia articles found": 1
+  }
+}
