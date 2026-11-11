@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, from_json, window, current_timestamp
-from pyspark.sql.types import StructType, StringType, TimestampType
+from pyspark.sql.types import StructType, StringType, LongType, TimestampType
 
 def main():
     spark = SparkSession.builder \
@@ -10,14 +10,18 @@ def main():
 
     spark.sparkContext.setLogLevel("WARN")
 
+    # 1. Load cleaned IMDb titles to filter Wikipedia changes against
+    title_basics = spark.read.parquet("work/data/parquet_clean/title_basics")
+    valid_titles = title_basics.select(col("primaryTitle").alias("imdb_title")).distinct()
+
     schema = StructType() \
         .add("title", StringType()) \
-        .add("timestamp", StringType()) \
+        .add("timestamp", LongType()) \
         .add("user", StringType())
 
     kafka_df = spark.readStream \
         .format("kafka") \
-        .option("kafka.bootstrap.servers", "localhost:9092") \
+        .option("kafka.bootstrap.servers", "kafka:29092") \
         .option("subscribe", "wikipedia-changes") \
         .load()
 
@@ -25,11 +29,19 @@ def main():
         from_json(col("value").cast("string"), schema).alias("data")
     ).select("data.*")
 
+    # Fix timestamp casting from epoch seconds to timestamp
     casted_df = parsed_df \
         .withColumn("event_time", col("timestamp").cast(TimestampType())) \
-        .dropna(subset=["event_time"])
+        .dropna(subset=["event_time", "title"])
 
-    watermarked_df = casted_df \
+    # Join back with IMDb titles to fulfill project requirements
+    joined_df = casted_df.join(
+        valid_titles,
+        casted_df["title"] == valid_titles["imdb_title"],
+        "inner"
+    )
+
+    watermarked_df = joined_df \
         .withWatermark("event_time", "10 minutes")
 
     windowed_counts = watermarked_df \
