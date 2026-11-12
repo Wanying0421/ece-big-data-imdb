@@ -52,7 +52,7 @@ def main():
         .count()
 
     query = windowed_counts.writeStream \
-        .outputMode("update") \
+        .outputMode("append") \
         .format("parquet") \
         .option("path", "work/data/streaming_output") \
         .option("checkpointLocation", "work/data/checkpoint") \
