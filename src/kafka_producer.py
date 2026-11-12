@@ -1,10 +1,11 @@
 import json
 import os
+import time
 from kafka import KafkaProducer
 import requests
 
 def main():
-    bootstrap_servers = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
+    bootstrap_servers = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "kafka:29092")
     topic = "wikipedia-changes"
     
     producer = KafkaProducer(
@@ -15,17 +16,22 @@ def main():
     url = "https://stream.wikimedia.org/v2/stream/recentchange"
     headers = {"User-Agent": "IMDbBigDataProject/1.0 (student@ece.fr)"}
     
-    response = requests.get(url, stream=True, headers=headers)
-    for line in response.iter_lines():
-        if line:
-            line_str = line.decode("utf-8")
-            if line_str.startswith("data: "):
-                data_json = line_str[6:]
-                try:
-                    event = json.loads(data_json)
-                    producer.send(topic, value=event)
-                except Exception:
-                    pass
+    while True:
+        try:
+            response = requests.get(url, stream=True, headers=headers, timeout=30)
+            for line in response.iter_lines():
+                if line:
+                    line_str = line.decode("utf-8")
+                    if line_str.startswith("data: "):
+                        data_json = line_str[6:]
+                        try:
+                            event = json.loads(data_json)
+                            producer.send(topic, value=event)
+                        except Exception:
+                            pass
+        except Exception as e:
+            print(f"Connection dropped ({e}), reconnecting in 5 seconds...")
+            time.sleep(5)
 
 if __name__ == "__main__":
     main()
