@@ -41,7 +41,7 @@ def main():
             print(f"Connection error or HTTP failure ({e}), reconnecting in 5 seconds...")
             time.sleep(5)
         finally:
-            if response:
+            if response is not None:
                 response.close()
 
 if __name__ == "__main__":

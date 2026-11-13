@@ -1,24 +1,20 @@
 from unittest.mock import patch, MagicMock
 import pytest
 import requests
+from src.kafka_producer import main
 
 @patch("src.kafka_producer.requests.get")
-def test_kafka_producer_503(mock_get):
-    # Mock an HTTP 503 error triggering raise_for_status
+@patch("src.kafka_producer.KafkaProducer")
+@patch("src.kafka_producer.time.sleep", side_effect=InterruptedError) # Pour stopper la boucle infinie du test
+def test_producer_reconnect_on_error(mock_sleep, mock_kafka, mock_get):
+    # Simuler une erreur HTTP 503
     mock_response = MagicMock()
     mock_response.raise_for_status.side_effect = requests.exceptions.HTTPError("503 Service Unavailable")
     mock_get.return_value = mock_response
 
-    with pytest.raises(requests.exceptions.HTTPError):
-        mock_response.raise_for_status()
-
-@patch("src.kafka_producer.requests.get")
-def test_kafka_producer_eof(mock_get):
-    # Mock normal stream closure (empty lines / EOF)
-    mock_response = MagicMock()
-    mock_response.iter_lines.return_value = []
-    mock_get.return_value = mock_response
-
-    response = mock_get()
-    lines = list(response.iter_lines())
-    assert lines == []
+    # Exécuter et vérifier que l'erreur déclenche bien la pause de reconnexion
+    with pytest.raises(InterruptedError):
+        main()
+    
+    mock_response.raise_for_status.assert_called_once()
+    assert mock_response.close.called
