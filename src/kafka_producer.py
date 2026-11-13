@@ -33,7 +33,7 @@ def main():
                         except Exception:
                             pass
             
-            # If the stream ends normally (EOF) without throwing an exception:
+            # Normal stream closure (EOF) handling with 5-second delay
             print("Stream closed normally (EOF), reconnecting in 5 seconds...")
             time.sleep(5)
             
