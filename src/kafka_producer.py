@@ -17,8 +17,11 @@ def main():
     headers = {"User-Agent": "IMDbBigDataProject/1.0 (student@ece.fr)"}
     
     while True:
+        response = None
         try:
             response = requests.get(url, stream=True, headers=headers, timeout=30)
+            response.raise_for_status()
+            
             for line in response.iter_lines():
                 if line:
                     line_str = line.decode("utf-8")
@@ -29,9 +32,17 @@ def main():
                             producer.send(topic, value=event)
                         except Exception:
                             pass
-        except Exception as e:
-            print(f"Connection dropped ({e}), reconnecting in 5 seconds...")
+            
+            # If the stream ends normally (EOF) without throwing an exception:
+            print("Stream closed normally (EOF), reconnecting in 5 seconds...")
             time.sleep(5)
+            
+        except Exception as e:
+            print(f"Connection error or HTTP failure ({e}), reconnecting in 5 seconds...")
+            time.sleep(5)
+        finally:
+            if response:
+                response.close()
 
 if __name__ == "__main__":
     main()
