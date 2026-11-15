@@ -44,6 +44,78 @@ For each eligible series, we calculated the highest and lowest ratings across al
 
 We excluded 2.119.096 of the 10.022.141 episode rows (21.14%) because their season number was missing. This means the results only reflect episodes that could be assigned to a season.
 
+### Q6 Actors credited in successful films across languages
+
+| Output metric | Count |
+| --- | ---: |
+| Collected candidate film records | 12,099 |
+| Film records with usable original language statements | 11,267 |
+| No Wikidata item found | 325 |
+| No original language statement found | 498 |
+| Multiple Wikidata items found | 9 |
+| Actors with at least two distinct language identifiers and two successful films | 6,265 |
+| Actors with at least three distinct language identifiers and two successful films | 2,676 |
+
+| Recorded parameter | Value |
+| --- | --- |
+| Input mode of the recorded run | Raw IMDb TSV gzip files |
+| Title type | Non-adult movie |
+| Minimum IMDb rating | 7.0 |
+| Minimum votes per successful film | 1,000 |
+| Language field | Wikidata P364 language identifiers |
+
+| Actor | IMDb identifier | Distinct language identifiers | Successful films with language data |
+| --- | --- | ---: | ---: |
+| Bruno Ganz | nm0004486 | 15 | 18 |
+| Tony Leung Chiu-wai | nm0504897 | 14 | 20 |
+| Rachel Weisz | nm0001838 | 13 | 14 |
+
+Full outputs: [actor results](reports/q6_results.csv),
+[three language subset](reports/q6_three_languages.csv),
+[counts by actor and language](reports/q6_by_language.csv),
+[film credit evidence](reports/q6_evidence.csv), and
+[collected language records with source URIs](reports/q6_language_sources.jsonl).
+
+#### Methodological explanation
+
+[To be written by the group before submission.]
+
+#### Discussion and limitations
+
+[To be written by the group before submission.]
+
+### Q7 Actors with an early career rating peak
+
+| Output metric | Count |
+| --- | ---: |
+| Matching actors | 2,701 |
+
+| Recorded parameter | Value |
+| --- | --- |
+| Input mode of the recorded run | Raw IMDb TSV gzip files |
+| Title type | Non-adult movie |
+| Minimum observed career span | 20 years |
+| Minimum distinct movie credits | 15 |
+| Early period fraction of the observed year span | One third |
+| Minimum votes for a retained rating | 1,000 |
+| Minimum rated movies in each period | 3 |
+
+| Actor | Movies | Career span in years | Early mean rating | Later mean rating | Rating gap |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Ulli Lommel | 36 | 56 | 6.66 | 2.90 | 3.76 |
+| Akbar Abdi | 93 | 38 | 7.28 | 4.43 | 2.85 |
+| Dmitriy Dyuzhev | 36 | 23 | 6.97 | 4.14 | 2.83 |
+
+[Full Q7 results](reports/q7_results.csv).
+
+#### Methodological explanation
+
+[To be written by the group before submission.]
+
+#### Discussion and limitations
+
+[To be written by the group before submission.]
+
 ## 3. Data enrichment
 
 We collected English Wikipedia synopses and biographies for the 6,822 films in the Top 10 list. We found a synopsis for 5,567 films. In total, 4,773 films had both a synopsis and biographies for three selected people.
@@ -110,7 +182,7 @@ We performed a 30-minute sustained streaming run, producing 55 distinct micro-ba
 | `{2026-11-12 21:08:00, 2026-11-12 21:13:00}` | The Lady from Shanghai | 1 |
 | `{2026-11-12 21:08:00, 2026-11-12 21:13:00}` | Readers | 3 |
 
-*Unit testing (`src/test_kafka_producer.py`) verifies mock handling for HTTP 503 errors and normal stream EOF closure scenarios.*
+*The committed unit test (`src/test_kafka_producer.py`) covers HTTP 503 error handling and response closure.*
 
 ## 5. Open question
 
