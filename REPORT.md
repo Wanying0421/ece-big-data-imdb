@@ -52,15 +52,15 @@ Full results: [reports/quality_issues.csv](reports/quality_issues.csv)
 
 ### 1.3 Handling of the issues
 
-| Action | Table | Rows / ids |
-| --- | --- | ---: |
-| Impossible value set to NULL and flagged in `dq_flags` | `name_basics` | 30 |
-| Impossible value set to NULL and flagged in `dq_flags` | `title_basics` | 6,307 |
-| Row moved to `_rejected` (missing parent) | `title_akas` | 98 |
-| Row moved to `_rejected` (missing parent) | `title_crew` | 56 |
-| Row moved to `_rejected` (missing parent) | `title_episode` | 5 |
-| Row moved to `_rejected` (missing parent) | `title_principals` | 8,348 |
-| Unknown ids removed from list columns | `title_crew`, `name_basics` | see table above |
+| Table | Input rows | Clean rows | Rejected rows | Flagged rows |
+| --- | ---: | ---: | ---: | ---: |
+| name_basics | 15,803,779 | 15,803,779 | 0 | 30 |
+| title_akas | 60,321,594 | 60,321,592 | 2 | 0 |
+| title_basics | 12,951,113 | 12,951,113 | 0 | 6,462 |
+| title_crew | 12,951,113 | 12,951,113 | 0 | 0 |
+| title_episode | 10,023,959 | 10,023,936 | 23 | 0 |
+| title_principals | 102,649,609 | 102,642,412 | 7,197 | 0 |
+| title_ratings | 1,730,885 | 1,730,885 | 0 | 0 |
 
 Cleaned data: `data/parquet_clean/` (not in Git). Summary: [reports/cleaning_summary.csv](reports/cleaning_summary.csv)
 
@@ -324,6 +324,71 @@ We kept series with at least three seasons of ten or more episodes each and at l
 For each eligible series, we calculated the highest and lowest ratings across all rated episodes with a known season number. We excluded series whose highest and lowest ratings were identical. Under the main rule, a series qualified if at least one episode with the highest rating was in the first two seasons and at least one episode with the lowest rating was in the final season. We then applied the stricter rule to check how many series still qualified when all tied episodes had to be in the expected seasons.
 
 We excluded 2.119.096 of the 10.022.141 episode rows (21.14%) because their season number was missing. This means the results only reflect episodes that could be assigned to a season.
+
+### Q6. Actors appearing in successful films across multiple original languages
+
+Full analyses completed on 14 November 2026.
+
+| Result | Count |
+| --- | ---: |
+| Candidate films submitted for language collection | 12,099 |
+| Films with usable original-language statements | 11,267 |
+| Films without an original-language statement | 498 |
+| Films without a matching Wikidata item | 325 |
+| Films with multiple matching Wikidata items | 9 |
+| Actors meeting the two-language selection criteria | 6,265 |
+| Actors meeting the three-language selection criteria | 2,676 |
+| Actor-language rows | 17,392 |
+| Actor-film-language evidence rows | 39,795 |
+
+The recorded run used non-adult movies with an IMDb rating of at least
+7.0 and at least 1,000 votes. Selected actors have at least two distinct
+qualifying films with known languages and at least two distinct Wikidata
+language identifiers.
+
+The three-language subset uses at least three language identifiers across
+at least two qualifying films. Language identifiers include language
+varieties; these counts do not measure an actor's spoken-language proficiency.
+
+| Actor | Distinct language identifiers | Qualifying films with known languages |
+| --- | ---: | ---: |
+| Bruno Ganz | 15 | 18 |
+| Tony Leung Chiu-wai | 14 | 20 |
+| Rachel Weisz | 13 | 14 |
+
+Outputs:
+
+- [All selected actors](reports/q6_results.csv)
+- [Three-language subset](reports/q6_three_languages.csv)
+- [Actor-language results](reports/q6_by_language.csv)
+- [Film-level evidence](reports/q6_evidence.csv)
+- [Language collection records and sources](reports/q6_language_sources.jsonl)
+
+### Q7. Actors with higher ratings during their early career
+
+The full run completed on 14 November 2026 and returned **2,701 actors**.
+
+| Run parameter | Value |
+| --- | --- |
+| Title selection | Non-adult movies |
+| Minimum observed career span | 20 years |
+| Minimum distinct movies | 15 |
+| Early period | First third of the observed career span |
+| Minimum votes for a rated movie | 1,000 |
+| Minimum rated movies in each period | 3 |
+| Rating conditions | Early mean and early maximum both exceed later values |
+
+Movies without ratings still contribute to the observed career span and
+movie count. A highest-rating tie across the early and later periods is excluded.
+
+| Actor | Movies | Career span (years) | Early mean rating | Later mean rating | Mean rating gap |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Ulli Lommel | 36 | 56 | 6.66 | 2.90 | 3.76 |
+| Akbar Abdi | 93 | 38 | 7.28 | 4.43 | 2.85 |
+| Dmitriy Dyuzhev | 36 | 23 | 6.98 | 4.14 | 2.84 |
+
+[Download the full Q7 results](reports/q7_results.csv)
+
 
 ### Q8. Multi-talented film professionals
 
