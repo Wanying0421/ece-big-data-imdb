@@ -1,5 +1,14 @@
 # ECE Big Data Processing Project: IMDb & Wikipedia
 
+## Group
+
+- Group: Data & AI gr-04
+- SANTIR Nouha, git username: nouhasantir
+- NGWA NGOH Laroche, git username: Laroche22
+- XIONG Wanying, git username: Wanying0421
+
+## About
+
 Batch and streaming analysis of the [IMDb non-commercial datasets](https://developer.imdb.com/non-commercial-datasets/) with Apache Spark (PySpark) and Apache Kafka, enriched with human-authored content from English Wikipedia.
 
 ## Tech stack
@@ -41,9 +50,3 @@ Then download the IMDb files into `data/raw/` and follow the full step-by-step g
 | `tests/` | Test scripts |
 | `data/` | Raw and processed data (not tracked in Git, see `PROJECT.md`) |
 | `docker-compose.yml` | Spark and Kafka (KRaft) environment |
-
-## Contributors
-
-- SANTIR Nouha
-- NGWA NGOH Laroche
-- XIONG Wanying
